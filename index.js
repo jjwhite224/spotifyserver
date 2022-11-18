@@ -95,7 +95,11 @@ var generateRandomString = function (length) {
   }
   return text;
 };
-
+app.UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                    .AllowCredentials()); // allow credentials
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
 })
